@@ -28,6 +28,11 @@ public class CsvSpliterator extends FixedBatchSpliteratorBase<String[]> {
         }
     }
 
+    /*
+    purely for optimization purposes: when the execution framework
+    decides to consume a spliterator in full.
+    Dont need to provide this as tryAdvance will do in most cases
+    */
     @Override public void forEachRemaining(Consumer<? super String[]> action) {
         if (action == null) throw new NullPointerException();
         try {
